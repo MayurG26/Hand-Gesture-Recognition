@@ -49,10 +49,6 @@ def count(thresholded, segmented):
         # compute the bounding box of the contour
         (x, y, w, h) = cv2.boundingRect(c)
 
-        # increment the count of fingers only if -
-        # 1. The contour region is not the wrist (bottom area)
-        # 2. The number of points along the contour does not exceed
-        #     25% of the circumference of the circular ROI
         if ((cY + (cY * 0.25)) > (y + h)) and ((circumference * 0.25) > c.shape[0]):
             count += 1
 
